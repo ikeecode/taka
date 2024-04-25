@@ -25,5 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('media/photos/<str:topic>', media_views.photos),
     path('media/populars/', media_views.populars),
-    path('stories/', stories_views.create_upload_file),
+    path('stories/<str:type>/', stories_views.story_from_image),
 ]
