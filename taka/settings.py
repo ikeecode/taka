@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-@h&f-5-1@fw)&l#&$%kclsoidi2v&sbwdqthx25eua2xr8d586
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', 'https://taka-pc42.onrender.com']
 
 
 SITE_ID = 2
