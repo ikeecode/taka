@@ -13,6 +13,12 @@ from decouple import config
 
 pexels = API(config('PEXELS_API_KEY'))
 
+@api_view(['GET'])
+@renderer_classes([JSONRenderer, BrowsableAPIRenderer, TemplateHTMLRenderer])
+def home(request):
+    return Response({
+        'message' : "Welcome to Taka API"
+    })
 
 @api_view(['GET'])
 @renderer_classes([JSONRenderer, BrowsableAPIRenderer, TemplateHTMLRenderer])

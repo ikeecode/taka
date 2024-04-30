@@ -11,10 +11,12 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-@h&f-5-1@fw)&l#&$%kclsoidi2v&sbwdqthx25eua2xr8d586
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'https://taka-pc42.onrender.com']
+ALLOWED_HOSTS = ['*', 'https://taka-pc42.onrender.com', 'http://127.0.0.1', 'http://localhost', 'https://www.postman.com']
 
 
 SITE_ID = 2
@@ -43,6 +45,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'stories',
     'media',
+    'drf_yasg',
+
 ]
 
 
@@ -155,4 +159,22 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
     )
     
+}
+
+
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+
+    'LOGIN_URL' : 'http://127.0.0.1:8000/users/login/'
+    
+}
+
+REDOC_SETTINGS = {
+   'LAZY_RENDERING': False,
+   
 }

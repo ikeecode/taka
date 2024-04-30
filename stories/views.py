@@ -134,7 +134,6 @@ def gemini_image_or_url_story(type, content):
 
 
 
-
 @api_view(['POST', 'GET'])
 @renderer_classes([JSONRenderer, BrowsableAPIRenderer, TemplateHTMLRenderer])
 @parser_classes([MultiPartParser,])
@@ -156,8 +155,6 @@ def story_from_image(request, type:str):
             
         tone    = request.data.get('tone', None)
         uprompt = request.data.get('prompt', None)
-
-
         try:
             story = pollish_story(image_info, tone=tone, uprompt=uprompt)
             story = json.loads(story)
@@ -182,3 +179,20 @@ def story_from_image(request, type:str):
             return Response({"error": str(e)}, status.HTTP_500_INTERNAL_SERVER_ERROR)
     else:
         return Response({'message' : 'Yes you can generate your stories here..'})
+    
+
+
+"""
+dont say time never take 
+ask for a speaker 
+dont talk while the avatar is talking 
+
+he is lives in cote d'ivoire or in cameroon 
+we can improve more on the demo 
+
+we add the avatar 
+we show the roadmap 
+
+
+
+"""
