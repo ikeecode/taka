@@ -47,7 +47,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', media_views.home),
     path('media/photos/<str:topic>', media_views.photos),
-    path('media/populars/', media_views.populars),
+    path('media/populars/', media_views.populars, name='populars'),
+    path('media/populars/<int:page_number>', media_views.next_page),
     path('stories/<str:type>/', stories_views.story_from_image),
      # documentation
     path('docs/', include([
