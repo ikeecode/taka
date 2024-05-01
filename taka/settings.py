@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-@h&f-5-1@fw)&l#&$%kclsoidi2v&sbwdqthx25eua2xr8d586
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'https://taka-pc42.onrender.com', 'http://127.0.0.1', 'http://localhost', 'https://www.postman.com', '142.250.200.138', 'https://taka-ai-com.web.app/', 'https://taka-ai-com.web.app']
+ALLOWED_HOSTS = ['*', 'https://taka-pc42.onrender.com', 'http://127.0.0.1', 'http://localhost', 'https://www.postman.com', '142.250.200.138', 'https://taka-ai-com.web.app/', 'https://taka-ai-com.web.app', 'http://localhost:3000',]
 
 
 SITE_ID = 2
@@ -53,7 +53,8 @@ INSTALLED_APPS = [
 
 CORS_ORIGIN_WHITELIST = [
     'https://www.postman.com',
-    'http://127.0.0.1',
+    'http://127.0.0.1:3000',
+    'http://localhost:3000',
     'https://taka-ai-com.web.app'
 ]
 
