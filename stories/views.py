@@ -15,6 +15,24 @@ import requests
 import google.generativeai as genai
 
 
+class ExposeHeadersMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        response = self.get_response(request)
+        response['Access-Control-Expose-Headers'] = 'story'
+        return response
+
+
+
+def expose_headers(view_func):
+    def wrapper(request, *args, **kwargs):
+        response = view_func(request, *args, **kwargs)
+        if isinstance(response, HttpResponse):
+            response['Access-Control-Expose-Headers'] = 'story'
+        return response
+    return wrapper
 
 # configurations
 
@@ -137,6 +155,7 @@ def gemini_image_or_url_story(type, content):
 @api_view(['POST', 'GET'])
 @renderer_classes([JSONRenderer, BrowsableAPIRenderer, TemplateHTMLRenderer])
 @parser_classes([MultiPartParser,])
+@expose_headers
 def story_from_image(request, type:str):
     if request.method == 'POST':
         if type == 'image':
