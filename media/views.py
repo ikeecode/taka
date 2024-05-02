@@ -16,19 +16,6 @@ from decouple import config
 pexels = API(config('PEXELS_API_KEY'))
 renderer_classes_var = [JSONRenderer, BrowsableAPIRenderer, TemplateHTMLRenderer]
 
-@api_view(['GET'])
-@renderer_classes(renderer_classes_var)
-def home(request):
-    return Response({
-        'message' : "Welcome to Taka API"
-    })
-
-@api_view(['GET'])
-@renderer_classes(renderer_classes_var)
-def photos(request, topic: str):
-    photos = pexels.search(topic, page=1, results_per_page=5)
-    print(photos)
-    return Response(photos, status.HTTP_200_OK)
 
 
 from pprint import pprint 
@@ -40,6 +27,22 @@ def get_next_page_number(url):
     page_number = parse_qs(urlparse(url=url).query).get('page')[0]
     return page_number
 
+@api_view(['GET'])
+@renderer_classes(renderer_classes_var)
+def home(request):
+    return Response({
+        'message' : "Welcome to Taka API"
+    })
+
+@api_view(['GET'])
+@renderer_classes(renderer_classes_var)
+def photos(request, topic: str):
+    photos = pexels.search(topic, page=1, results_per_page=10)
+    url = photos.get('next_page')
+    number = get_next_page_number(url=url)
+
+    photos['next_page'] = f'https://taka-1.onrender.com/media/photos/{topic}/{number}'
+    return Response(photos, status.HTTP_200_OK)
 
 
 @api_view(['GET'])
