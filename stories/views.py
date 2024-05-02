@@ -176,6 +176,7 @@ def story_from_image(request, type:str):
         uprompt = request.data.get('prompt', None)
         try:
             story = pollish_story(image_info, tone=tone, uprompt=uprompt)
+            
             story = json.loads(story)
             nuggets = "".join(story.get('story'))
             audio_file_path = text_to_speech(nuggets)
@@ -183,6 +184,8 @@ def story_from_image(request, type:str):
 
             with open(audio_file_path, 'rb') as f:
                 audio_data = f.read()
+
+            print(story)
 
             response = HttpResponse(audio_data, content_type='audio/mpeg')
             response['Content-Disposition'] = f'attachment; filename={filename}'

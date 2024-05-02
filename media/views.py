@@ -27,12 +27,15 @@ def get_next_page_number(url):
     page_number = parse_qs(urlparse(url=url).query).get('page')[0]
     return page_number
 
+
 @api_view(['GET'])
 @renderer_classes(renderer_classes_var)
 def home(request):
     return Response({
         'message' : "Welcome to Taka API"
     })
+
+
 
 @api_view(['GET'])
 @renderer_classes(renderer_classes_var)
