@@ -1,3 +1,10 @@
+import io 
+import os 
+import json
+import requests 
+import firebase_admin
+import google.generativeai as genai
+
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view, renderer_classes, parser_classes
@@ -8,11 +15,38 @@ from django.http import HttpResponse, JsonResponse
 from PIL import Image
 from decouple import config
 from uuid import uuid4
+from firebase_admin import credentials, storage
+from decouple import config
 
-import io 
-import json
-import requests 
-import google.generativeai as genai
+
+cred = credentials.Certificate('./taka.json')
+firebase = firebase_admin.initialize_app(cred, {
+    'storageBucket' : config('storageBucket')
+})
+
+
+def upload_audio_to_firebase(file_path, destination_path):    
+    try:
+        bucket = storage.bucket()
+        blob   = bucket.blob(destination_path)
+        blob.upload_from_filename(file_path)
+        blob.make_public()
+
+        return blob.public_url
+    
+    except Exception as e:
+        print(f"Error uploading file: {e}")
+
+
+# delete a file in a folder 
+def delete_file_in_folder(folder_path, filename):
+    try:
+        file_path = os.path.join(folder_path, filename)
+        
+        if os.path.exists(file_path):
+            os.remove(file_path)
+    except Exception as e:
+        print(f"Error deleting file: {e}")
 
 
 class ExposeHeadersMiddleware:
@@ -34,8 +68,8 @@ def expose_headers(view_func):
         return response
     return wrapper
 
-# configurations
 
+# configurations
 genai.configure(api_key=config('GEMINI_KEY'))
 model          = genai.GenerativeModel('gemini-1.0-pro-latest')
 vision         = genai.GenerativeModel('gemini-pro-vision')
@@ -75,11 +109,16 @@ def text_to_speech(message):
     }
 
     response = requests.post(url, headers=headers, json=data)
+    filepath = f"voice_notes/{filename}"
 
-    with open(f"voice_notes/{filename}", "wb") as f:
+    with open(filepath, "wb") as f:
         f.write(response.content)
+
+    # save to firebase 
+    url = upload_audio_to_firebase(filepath, filepath)
+    delete_file_in_folder('.', filepath)
     
-    return f"voice_notes/{filename}"
+    return url 
 
 
 
@@ -179,23 +218,12 @@ def story_from_image(request, type:str):
             
             story = json.loads(story)
             nuggets = "".join(story.get('story'))
-            audio_file_path = text_to_speech(nuggets)
-            filename = audio_file_path.split('/')[1]
-
-            with open(audio_file_path, 'rb') as f:
-                audio_data = f.read()
-
-            print(story)
-
-            response = HttpResponse(audio_data, content_type='audio/mpeg')
-            response['Content-Disposition'] = f'attachment; filename={filename}'
-            response['story'] = story
-
-            return response
+            url = text_to_speech(nuggets)
             
-            # return Response({
-            #     'story' : story
-            # }, status.HTTP_200_OK)
+            return Response({
+                'story' : story,
+                'url' : url 
+            }, status.HTTP_200_OK)
 
         except Exception as e:
             return Response({"error": str(e)}, status.HTTP_500_INTERNAL_SERVER_ERROR)
