@@ -1,13 +1,13 @@
 {
-  "type": "service_account",
-  "project_id": "taka-ai-com",
-  "private_key_id": "d1a85c263eac46e4922166ac72b117782e673466",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCZbOZr/iAA27Cu\n+gVyTvjN5bMxOSnHQYwrDC9IkqTuiZBPK0r+4nS9Sp/Ga3RmqitAIQvj6DdLRQIj\nV56oYNC+sWksazDhFUceZoXrgOUKyDDWhkMy425S3b1svNdQt37OYUZTQwPq1yRy\nUbbcoy7BoeCQz1J6zHNS1r6BnAeiZsnZX/zJDQ9GPHB975Ia17ozuuS/6uW2du2F\nR+OpKNUC75K5gKj4r4Dngv22PNKdilQFm658zUsLUc+dbgJejgPiAJNwvCE7wwIU\nXZOKhTJRwM9CFHN3hwaaZtCMVsCGsxuIHMxy4JzEdFfJKH/NQkN6rU4yDaSWQKsd\nriCrFf2nAgMBAAECggEAGUqh63B/bxTIGfgeOLs6+ZohgX5GXFH6XMhL7R87cBUe\nRGbDHKRRETlBgHCLRjdMHOy1rJLFtrNACHpzrZcUIjNVvpxG+PvMdv74mZtsZmwc\n3OhSIIvsTl2+UbQJnIU7MqNHeAdGmIpxuCSvS8zcss/QGJ8MnjCg3CmJSw1hFsyw\nkT12PEnnvANc7R0V/S8wZSFQf40623hSoiM1UYW0u4ZTN4T3nsS3FIboK51tH7/m\nZx0jJuhhrCG34BqJVoxq6rrUfKjbPBxT6cUoBhN4z4EQAXtIHgtud1hK64M8O3He\npYmfqYhTODX9vVPqNuO5AwlD+aPPmA70xY8WHTDHVQKBgQDQpcyJRJ8LCDb5cSH0\necxkq8aMiPmExAypLhj/3/lrF/zBGSOodG0rq0LVSNVYmBSe581/KDH4I4hlF/m6\nmD1YYufMP19vYVj0H1Qb2uZO73t93IcfnJc35MwbfGpAkKKMFeaLk6VhKBAazfGt\nDkcBCxUUhCqTc1453p6mps1XjQKBgQC8Pr96ocwyJLYxAU9xnoEsLIe+H18tJ4+f\nDMUBUUhiIM7m3JsnRBILRjoZUhSVEPCggy0RvrRzmwm3EE2cHmAVwf8lTUSTHsac\nUhDgnkyJDiETHFMUlEAW3nxVpJbJGD5o9ELa3mb+Uf4uPB0o0IqumiVn7J2Mkmuo\ngU5ZlQiTAwKBgHNL223TLKvU+0P1/1RwZcEPpyULoA58o55tacUjiFlkpPgzox+4\nTod+GO1xVOujBmoVH9pvZMWBJSLwD8DL1cJczUhxkJQk0Bn+oeTOnsvpzGztiwGt\n72YkmaFqq/BHvHr6sy5YBWBd2iBlw3Hk3Nm3vQtcSYa3js8dtL/Uls4VAoGAa8gx\nsnF5jSxf9OcfKZrrsvM8NauYvy3rmdGh6wMzQpwuWxjs7SqYekQXd+/7QO6WGBGD\neKmMgLTAd0Sqaz0pHswY3q7DGMmCRnbmmvWINOEWJu8M0refiniREChQ/YsYENfq\nf47fwbYIp0hcGcZt4VL5H+vmuVoMskp3JeujISkCgYAcc51klxwo13xGmQCxd1Hd\nSHi++SWXViIl1BMWa1foSYOpzreU01PQYJcLmLBgpm8+no1KK6nn08Lkljk3OU2P\n8SLEjMRihLnSgUck0UGFJtE6jd7GRLFaDSzjibEuBoACh3xdiANQTWWzSgSzq0x9\neygwthY1ZDTIJPfMs/cUtQ==\n-----END PRIVATE KEY-----\n",
-  "client_email": "firebase-adminsdk-sg2xk@taka-ai-com.iam.gserviceaccount.com",
-  "client_id": "100246312638687215577",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-sg2xk%40taka-ai-com.iam.gserviceaccount.com",
-  "universe_domain": "googleapis.com"
+  "type": "",
+  "project_id": "",
+  "private_key_id": "",
+  "private_key": "",
+  "client_email": "",
+  "client_id": "",
+  "auth_uri": "",
+  "token_uri": "",
+  "auth_provider_x509_cert_url": "",
+  "client_x509_cert_url": "",
+  "universe_domain": ""
 }
